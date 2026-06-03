@@ -38,7 +38,8 @@ def analizza_materiale(req: MaterialeRequest):
     """
 
     # Chiamata HTTP interna dal server a Gemini (Endpoint stabile v1)
-    url = f"[https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=](https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=){api_key}"
+    # Chiamata HTTP interna dal server a Gemini (Endpoint stabile v1)
+    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
     payload = {
         "contents": [{
@@ -48,7 +49,7 @@ def analizza_materiale(req: MaterialeRequest):
 
     try:
         response = requests.post(url, headers=headers, json=payload)
-        if response.statusCode != 200:
+        if response.status_code != 200:
             raise HTTPException(status_code=400, detail=f"Errore Gemini: {response.text}")
         
         # Estraiamo il testo e puliamolo
