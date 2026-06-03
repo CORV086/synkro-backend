@@ -39,7 +39,7 @@ def analizza_materiale(req: MaterialeRequest):
 
     # Chiamata HTTP interna dal server a Gemini (Endpoint stabile v1)
     # Chiamata HTTP interna dal server a Gemini (Endpoint stabile v1)
-    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
     payload = {
         "contents": [{
